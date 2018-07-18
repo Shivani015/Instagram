@@ -16,6 +16,7 @@ public class Story extends AppCompatActivity {
     ImageView story;
     private int position = 0;
     private Handler handler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +24,8 @@ public class Story extends AppCompatActivity {
 
         Intent intent = getIntent();
         int position = intent.getIntExtra("position",0);
-        story = findViewById(R.id.story);
+        story = findViewById(R.id.storyImageView);
+
         handler = new Handler() {
             @Override
             public void publish(LogRecord logRecord) {
@@ -39,7 +41,7 @@ public class Story extends AppCompatActivity {
             public void close() throws SecurityException {
 
             }
-        };
+        } ;
 
         setImage(position);
         Log.d("In StoryActivity",""+position);
@@ -50,7 +52,21 @@ public class Story extends AppCompatActivity {
     private void startHandler(final int pos) {
         this.position = pos;
 
+        story.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                setImage(position);
+                if(position<6) {
+                    position++;
+                    startHandler(position);
+                }else {
+                    finish();
+                }
+            }
 
+
+
+        },2000);
 
     }
 
@@ -71,11 +87,11 @@ public class Story extends AppCompatActivity {
                 break;
 
             case 3:
-                Glide.with(this).load(R.drawable.match).into(story);
+                Glide.with(this).load(R.drawable.computer).into(story);
                 break;
 
             case 4:
-                Glide.with(this).load(R.drawable.computer).into(story);
+                Glide.with(this).load(R.drawable.match).into(story);
                 break;
             case 5:
                 Glide.with(this).load(R.drawable.weather).into(story);
@@ -88,11 +104,8 @@ public class Story extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
 
-        handler.removeCallbacksAndMessages(null);
-
+        handler.close();
         finish();
 
     }
-
-
 }

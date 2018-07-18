@@ -327,6 +327,21 @@ public class MainActivity extends AppCompatActivity {
     public void post(View view) {
         Pix.start(MainActivity.this,RC_PIX,1);
     }
+
+    public void logout(View view) {
+
+        AuthUI.getInstance()
+                .signOut(this)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        Intent intent = new Intent(MainActivity.this,Splash.class);
+                        startSignOut();
+                        startActivity(intent);
+
+                    }
+                });
+    }
 }
 
 
