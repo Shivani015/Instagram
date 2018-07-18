@@ -74,28 +74,26 @@ public class Story extends AppCompatActivity {
 
         switch (position) {
             case 0:
-                Glide.with(this).load(R.drawable.mark).into(story);
+                Glide.with(this).load(R.drawable.computer).into(story);
 
                 break;
 
             case 1:
-                Glide.with(this).load(R.drawable.hubspot).into(story);
+                Glide.with(this).load(R.drawable.heading).into(story);
                 break;
 
             case 2:
-                Glide.with(this).load(R.drawable.image).into(story);
+                Glide.with(this).load(R.drawable.match).into(story);
                 break;
 
             case 3:
-                Glide.with(this).load(R.drawable.computer).into(story);
+                Glide.with(this).load(R.drawable.makeup).into(story);
                 break;
 
             case 4:
-                Glide.with(this).load(R.drawable.match).into(story);
+                Glide.with(this).load(R.drawable.heading).into(story);
                 break;
-            case 5:
-                Glide.with(this).load(R.drawable.weather).into(story);
-                break;
+
         }
 
     }

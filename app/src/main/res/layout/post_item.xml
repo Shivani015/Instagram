@@ -42,7 +42,7 @@
                 android:layout_height="30dp"
                 android:layout_marginLeft="9dp"
                 android:paddingTop="5sp"
-                android:src="@drawable/weather" />
+                android:src="@drawable/map" />
 
             <ImageView
                 android:id="@+id/comment"
